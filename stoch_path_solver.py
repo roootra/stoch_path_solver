@@ -47,10 +47,10 @@ class StochasticPathSolver:
             sample_prob = element[0] / sum(element)
             # if sample does not provide an appropriate expected next strategy, drop it
             if next_a: # then, if NE_prob > sample_prob, player plays A (too many times played B)
-                if mixed_ne_prob > sample_prob:
+                if mixed_ne_prob < sample_prob:
                     appropriate_samples.append(element)
             else: # then, if NE_prob < sample_prob, player plays B (too many times played A)
-                if mixed_ne_prob < sample_prob:
+                if mixed_ne_prob > sample_prob:
                     appropriate_samples.append(element)
 
         # calculate probabilities
